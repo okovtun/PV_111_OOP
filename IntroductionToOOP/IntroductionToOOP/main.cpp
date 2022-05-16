@@ -5,6 +5,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#define delimiter "\n--------------------------------------------\n"
+
 class Point
 {
 	double x;
@@ -61,8 +63,17 @@ public:
 		cout << "Destructor:\t" << this << endl;
 	}
 
+	//				Operators:
+	Point operator=(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyAssignment:\t" << this << endl;
+		return *this;
+	}
+
 	//				Methods
-	double distance(Point other)
+	double distance(const Point& other)
 	{
 		//this - точка, для которой вызвался метод 
 		//		 (от которой нужно найти расстояние)
@@ -80,16 +91,20 @@ public:
 	}
 };
 
-double distance(Point A, Point B)
+double distance(const Point& A, const Point& B)
 {
 	double x_distance = A.get_x() - B.get_x();
 	double y_distance = A.get_y() - B.get_y();
+	//A.set_x(-10);
 	double distance = sqrt(x_distance*x_distance + y_distance * y_distance);
 	return distance;
 }
 
 //#define STRUCT_POINT
 //#define DISTANCE
+//#define CONSTRUCTORS_CHECK
+//#define ASSIGNMENT_CHECK_1
+#define ASSIGNMENT_CHECK_2
 
 void main()
 {
@@ -123,19 +138,24 @@ void main()
 	B.set_x(7);
 	B.set_y(8);
 	cout << B.get_x() << "\t" << B.get_y() << endl;
-
+	cout << delimiter << endl;
 	cout << "Расстояние от точки A до точки B: " << A.distance(B) << endl;
+	cout << delimiter << endl;
 	cout << "Расстояние от точки B до точки A: " << B.distance(A) << endl;
+	cout << delimiter << endl;
 	cout << "Расстояние между точками A и B:   " << distance(A, B) << endl;
+	cout << delimiter << endl;
 	cout << "Расстояние между точками B и A:   " << distance(B, A) << endl;
+	cout << delimiter << endl;
 #endif // DISTANCE
 
+#ifdef CONSTRUCTORS_CHECK
 	/*for (int i = 0; i < 10; i++)
-	{
-		cout << i << "\t";
-	}
-	//cout << i << endl;
-	cout << endl;*/
+{
+	cout << i << "\t";
+}
+//cout << i << endl;
+cout << endl;*/
 	int a(2);
 	cout << a << endl;
 
@@ -157,7 +177,23 @@ void main()
 	Point F(D);	//Copy constructor
 	F.print();
 
-	//CopyAssignment
+#endif // CONSTRUCTORS_CHECK
+
+#ifdef ASSIGNMENT_CHECK_1
+	//CopyAssignment  
+	Point A(2, 3);
+	Point B = A;//CopyConstructor потому что объект 'B' создается
+	Point C;	//Default constructor
+	C = B;		//CopyAssignment потому что объект 'C' уже существует  
+#endif // ASSIGNMENT_CHECK_1
+
+	int a, b, c;
+	a = b = c = 0;
+	cout << a << "\t" << b << "\t" << c << endl;
+
+	Point A, B, C;
+	A = B = C = Point(2, 3);
+	A.print();
 }
 
 /*
