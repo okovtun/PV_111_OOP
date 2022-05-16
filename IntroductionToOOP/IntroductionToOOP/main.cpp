@@ -28,14 +28,37 @@ public:
 	}
 
 	//				Constructors:
-	Point()
+	/*Point()
 	{
 		x = y = 0;
 		cout << "DefaultConstructor:\t" << this << endl;
+	}*/
+	/*Point(double x)
+	{
+		this->x = x;
+		this->y = 0;
+		cout << "SingleArgumentConstructor:" << this << endl;
+	}*/
+	Point(double x = 0, double y = 0)
+	{
+		this->x = x;
+		this->y = y;
+		cout << "Constructor:\t" << this << endl;
+		//pause
+		//Paul
+		//Shallow copy
+		//Deep copy
+	}
+	//Class(const Class& other);
+	Point(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyConstructor:" << this << endl;
 	}
 	~Point()
 	{
-		cout << "Destructor:\t\t" << this << endl;
+		cout << "Destructor:\t" << this << endl;
 	}
 
 	//				Methods
@@ -113,11 +136,28 @@ void main()
 	}
 	//cout << i << endl;
 	cout << endl;*/
-	int a;
-	//cout << a << endl;
+	int a(2);
+	cout << a << endl;
 
 	Point A;	//Default constructor
 	A.print();
+
+	Point B = 5;//SingleArgumentConstructor
+	B.print();
+
+	Point C(8); //SingleArgumentConstructor
+	C.print();
+
+	Point D(2, 3);
+	D.print();
+
+	Point E = D;//Copy constructor
+	E.print();
+
+	Point F(D);	//Copy constructor
+	F.print();
+
+	//CopyAssignment
 }
 
 /*
