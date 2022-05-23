@@ -5,12 +5,27 @@ https://meet.google.com/mho-khdw-fhj
 Book:
 https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sharing
 
+TOREAD:
+http://cplusplus.com/doc/tutorial/typecasting/
+
 TODO:
+Проверочный код должен заработать:
+	Fraction A;
+	cout << "Введите простую дробь: ";
+	cin >> A;
+	cout << A << endl;
+Варианты ввода:
+	1/2
+	5
+	2(3/4)
+	2 3/4
+
+DONE:
 Для класса Fraction перегрузить
-1. Все арифметические операторы: +, -, *, /;
-2. Increment/Decrement (++/--);
-3. Составные присваивания (Compound assignments): +=, -=, *=, /=;
-4. Операторы сравнения: ==, !=, >, <, >=, <=;
+1. Все арифметические операторы: +, -, *, /;		DONE
+2. Increment/Decrement (++/--);						DONE
+3. Составные присваивания (Compound assignments): +=, -=, *=, /=;	DONE
+4. Операторы сравнения: ==, !=, >, <, >=, <=;		DONE
 
 DONE:
 В отдельном проекте реализовать класс Fraction, описывающий простую дробь.
