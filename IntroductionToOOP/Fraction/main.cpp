@@ -1,8 +1,11 @@
-﻿#include<iostream>
+﻿#pragma warning (disable:4326)
+#include<iostream>
 using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
+
+//#define FULL_COMPARISON
 
 class Fraction;
 Fraction operator*(Fraction left, Fraction right);
@@ -47,7 +50,8 @@ public:
 		this->denominator = 1;
 		cout << "DefConstructor:\t" << this << endl;
 	}
-	Fraction(int integer)
+	explicit Fraction(int integer)
+		//	явный
 	{
 		this->integer = integer;
 		this->numerator = 0;
@@ -106,6 +110,15 @@ public:
 		return old;
 	}
 
+	//				Type-cast operators:
+	explicit operator int()const
+	{
+		return integer;
+	}
+	operator double()const
+	{
+		return integer + (double)numerator / denominator;
+	}
 
 	//				Methods:
 	Fraction& to_proper()
@@ -200,6 +213,7 @@ Fraction operator/(Fraction left, Fraction right)
 	return left.to_improper()*right.inverted();
 }
 
+#ifdef FULL_COMPARISON
 bool operator==(Fraction left, Fraction right)
 {
 	left.to_improper();
@@ -237,6 +251,12 @@ bool operator>=(const Fraction& left, const Fraction& right)
 {
 	return !(left < right);
 }
+#endif // FULL_COMPARISON
+
+bool operator==(const Fraction& left, const Fraction& right)
+{
+	return (double)left == right;
+}
 
 ostream& operator<<(ostream& os, const Fraction& obj)
 {
@@ -255,6 +275,10 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 //#define CONSTRUCTORS_CHECK
 //#define ARITHMETICAL_OPERATORS_CHECK
 //#define INCREMENT_CHECK
+//#define COMPARISON_OPERATORS_CHECK
+//#define OSTREAM_OPERATOR_CHECK
+//#define TYPE_CONVERSIONS_BASE //Type casting
+//#define CONVERSIONS_FROM_OTHER_TO_CLASS
 
 void main()
 {
@@ -305,11 +329,67 @@ void main()
 	}
 #endif // INCREMENT_CHECK
 
-	//cout << (Fraction(1, 2) >= Fraction(3,4)) << endl;
+#ifdef COMPARISON_OPERATORS_CHECK
+	cout << (Fraction(1, 2) >= Fraction(3, 4)) << endl;
+#endif // COMPARISON_OPERATORS_CHECK
 
+#ifdef OSTREAM_OPERATOR_CHECK
 	Fraction A(1, 2);
 	cout << A << endl;
 	A.print();
-	int a;
-	cin >> a;
+#endif // OSTREAM_OPERATOR_CHECK
+
+#ifdef TYPE_CONVERSIONS_BASE
+	/*
+--------------------------------------
+(type)value;	//C_like notation (C-подобная форма записи)
+type(value);	//Functional notation (функциональная форма записи)
+--------------------------------------
+*/
+//				r-value
+//			l-value = r-value;
+
+	cout << typeid(7 / .2).name() << endl;
+	int a = 2;		//No conversions
+	double b = 3;	//Conversion from less to more
+	int c = b;		//Converion from more to less without data loss
+	int d = 5.5;	//Conversion from more to less with data loss  
+#endif // TYPE_CONVERSIONS_BASE
+
+#ifdef CONVERSIONS_FROM_OTHER_TO_CLASS
+			/*
+----------------------------------------------
+1. From other to Class:
+	Single argument constructor
+	Assignment operator
+2. From Class to other types;
+----------------------------------------------
+*/
+
+//Fraction A = 5;	//Conversion from int to Fraction
+//cout << A << endl;
+	Fraction B;
+	cout << "\n-------------------------------\n";
+	B = (Fraction)(8);
+	cout << "\n-------------------------------\n";
+	cout << B << endl;
+#endif // CONVERSIONS_FROM_OTHER_TO_CLASS
+
+	/*
+	-----------------------------------------
+		operator type()
+		{
+			conversion code;
+		}
+	-----------------------------------------
+	*/
+
+	Fraction A(2, 3, 4);
+	int a = (int)A;
+	cout << a << endl;
+
+	double b = A;
+	cout << b << endl;
+
+	cout << (Fraction(1, 2) == Fraction(5, 11)) << endl;
 }

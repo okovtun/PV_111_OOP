@@ -10,6 +10,11 @@ http://cplusplus.com/doc/tutorial/typecasting/
 
 TODO:
 Проверочный код должен заработать:
+	Fraction A = 2.75;
+	cout << A << endl;
+
+DONE:
+Проверочный код должен заработать:
 	Fraction A;
 	cout << "Введите простую дробь: ";
 	cin >> A;
