@@ -9,6 +9,18 @@ TOREAD:
 http://cplusplus.com/doc/tutorial/typecasting/
 
 TODO:
+В отдельном проекте в Solution IntroductionToOOP реализовать класс String,
+описывающий строку. Обеспечить следующие варианты создания строк:
+	String str1;	//Создается пустая строка размером 80 Byte
+	String str2(8);	//Создается пустая строка размером 8 Byte
+	String str3 = "Hello";
+	String str4 = "World";
+	String str5 = str3 + str4;
+	cout << str5 << endl;
+	cout << "Введите строку: "; cin >> str1;
+	cout << str1 << endl;
+
+DONE:
 Проверочный код должен заработать:
 	Fraction A = 2.75;
 	cout << A << endl;

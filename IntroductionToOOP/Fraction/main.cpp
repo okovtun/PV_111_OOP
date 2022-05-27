@@ -1,4 +1,5 @@
-﻿#pragma warning (disable:4326)
+﻿#define _CRT_SECURE_NO_WARNINGS
+#pragma warning (disable:4326)
 #include<iostream>
 using namespace std;
 using std::cin;
@@ -58,6 +59,16 @@ public:
 		this->denominator = 1;
 		cout << "1argConstructor:" << this << endl;
 	}
+	Fraction(double decimal)
+	{
+		decimal += 1e-10;
+		integer = decimal;
+		decimal -= integer;
+		denominator = 1e+9;
+		numerator = decimal * denominator;
+		reduce();
+		cout << "ConstructorDBL:\t" << this << endl;
+	}
 	Fraction(int numerator, int denominator)
 	{
 		this->integer = 0;
@@ -110,6 +121,14 @@ public:
 		return old;
 	}
 
+	Fraction& operator()(int integer, int numerator, int denominator)
+	{
+		set_integer(integer);
+		set_numerator(numerator);
+		set_denominator(denominator);
+		return *this;
+	}
+
 	//				Type-cast operators:
 	explicit operator int()const
 	{
@@ -143,6 +162,32 @@ public:
 		inverted.numerator = inverted.denominator;
 		inverted.denominator = buffer;
 		return inverted;
+	}
+	Fraction& reduce()
+	{
+		//https://www.webmath.ru/poleznoe/formules_12_7.php
+		int more, less, rest;
+		if (numerator > denominator)
+		{
+			more = numerator;
+			less = denominator;
+		}
+		else
+		{
+			less = numerator;
+			more = denominator;
+		}
+		do
+		{
+			rest = more % less;
+			more = less;
+			less = rest;
+		} while (rest);
+		int GCD = more;	//GCD - Greatest Common Divisor (Наибольший общий делитель)
+		if (GCD == 0)return *this;
+		numerator /= GCD;
+		denominator /= GCD;
+		return *this;
 	}
 
 	void print()const
@@ -178,7 +223,7 @@ Fraction operator+(const Fraction& left, const Fraction& right)
 		left.get_integer() + right.get_integer(),
 		left.get_numerator()*right.get_denominator() + right.get_numerator()*left.get_denominator(),
 		left.get_denominator()*right.get_denominator()
-	).to_proper();
+	).to_proper().reduce();
 }
 Fraction operator*(Fraction left, Fraction right)
 {
@@ -198,7 +243,7 @@ Fraction operator*(Fraction left, Fraction right)
 	(
 		left.get_numerator()*right.get_numerator(),
 		left.get_denominator()*right.get_denominator()
-	).to_proper();
+	).to_proper().reduce();
 }
 Fraction operator/(Fraction left, Fraction right)
 {
@@ -255,7 +300,7 @@ bool operator>=(const Fraction& left, const Fraction& right)
 
 bool operator==(const Fraction& left, const Fraction& right)
 {
-	return (double)left == right;
+	return (double)left == (double)right;
 }
 
 ostream& operator<<(ostream& os, const Fraction& obj)
@@ -271,6 +316,38 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 	return os;*/
 	return obj.print(os);
 }
+istream& operator>>(istream& is, Fraction& obj)
+{
+	const int SIZE = 256;
+	char buffer[SIZE] = {};	//Строка - это массив элементов char
+	//cin >> buffer;
+	cin.getline(buffer, SIZE);
+	char delimiters[] = "()/ ";
+	char* sz_numbers[3] = {};	//Массив строк, который будет хранить числа в строковом формате
+	//sz_ - string zero (строка, заканчивающаяся нулем)
+	int i = 0;	//Счетчик цикла
+	//http://cplusplus.com/reference/cstring/strtok/
+	for (char* pch = strtok(buffer, delimiters); pch; pch = strtok(NULL, delimiters))
+	{
+		sz_numbers[i++] = pch;
+	}
+	obj = Fraction();	//Обнуляем объект (сбрасываем его в объект по умолчанию)
+	switch (i)
+	{
+	case 1: obj.set_integer(atoi(sz_numbers[0])); break;
+		//atoi() - ASCII-string to integer (преобразует строку в число)
+		//http://cplusplus.com/reference/cstdlib/atoi/
+	case 2:
+		obj.set_numerator(atoi(sz_numbers[0]));
+		obj.set_denominator(atoi(sz_numbers[1]));
+		break;
+	case 3:
+		obj.set_integer(atoi(sz_numbers[0]));
+		obj.set_numerator(atoi(sz_numbers[1]));
+		obj.set_denominator(atoi(sz_numbers[2]));
+	}
+	return is;
+}
 
 //#define CONSTRUCTORS_CHECK
 //#define ARITHMETICAL_OPERATORS_CHECK
@@ -279,6 +356,8 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 //#define OSTREAM_OPERATOR_CHECK
 //#define TYPE_CONVERSIONS_BASE //Type casting
 //#define CONVERSIONS_FROM_OTHER_TO_CLASS
+//#define CONVERSIONS_FROM_CLASS_TO_OTHER
+//#define DOUBLE_CONSTRUCTOR_CHECK
 
 void main()
 {
@@ -384,6 +463,7 @@ type(value);	//Functional notation (функциональная форма за
 	-----------------------------------------
 	*/
 
+#ifdef CONVERSIONS_FROM_CLASS_TO_OTHER
 	Fraction A(2, 3, 4);
 	int a = (int)A;
 	cout << a << endl;
@@ -392,4 +472,22 @@ type(value);	//Functional notation (функциональная форма за
 	cout << b << endl;
 
 	cout << (Fraction(1, 2) == Fraction(5, 11)) << endl;
+#endif // DEBUG
+
+#ifdef DOUBLE_CONSTRUCTOR_CHECK
+	Fraction A = 2.75;
+	cout << A << endl;
+#endif // DOUBLE_CONSTRUCTOR_CHECK
+
+	Fraction A = 2.75;
+	cout << "Введите простую дробь: "; cin >> A;
+	cout << A << endl;
+	cout << (double)A << endl;
+
+	/*A.set_integer(123);
+	A.set_numerator(55);
+	A.set_denominator(77);*/
+	A(123, 55, 77);
+
+	cout << A << endl;
 }
