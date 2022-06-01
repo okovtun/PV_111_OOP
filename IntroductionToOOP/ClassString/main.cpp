@@ -49,6 +49,15 @@ public:
 		//---------------------------------------------------------------------------
 		cout << "CopyConstructor:" << this << endl;
 	}
+	String(String&& other)
+	{
+		//MoveConstructor выполнет ShellowCopy (Повершностное копирование)
+		this->size = other.size;
+		this->str = other.str;	//Копируем адрес памяти, пренадлежащей другому объекту
+		other.size = 0;
+		other.str = nullptr;	//Зануляем адрес памяти в другом объекте, чтобы эту память НЕ удалил деструктор
+		cout << "MoveConstructor:" << this << endl;
+	}
 	~String()
 	{
 		delete[] this->str;
@@ -67,6 +76,16 @@ public:
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
 		cout << "CopyAssignment:\t" << this << endl;
+		return *this;
+	}
+	String& operator=(String&& other)
+	{
+		delete[] this->str;
+		this->size = other.size;
+		this->str = other.str;
+		other.size = 0;
+		other.str = nullptr;
+		cout << "MoveAssignment:\t" << this << endl;
 		return *this;
 	}
 	const char& operator[](int i)const
@@ -135,7 +154,22 @@ void main()
 	cout << str1 << endl;
 	String str2("World");
 	cout << str2 << endl;
-	String str3 = str1 + " " + str2;
+	//String str3 = str1 + str2;	//MoveConstructor
+	String str3;
+	str3 = str1 + str2;
 	//str3.print();
 	cout << str3 << endl;
 }
+
+/*
+--------------------------------------------------------------------
+MoveMethods:
+MoveConstructor
+MoveAssignment
+=, +=, prefix++
++
+
+CopyMethods - DeepCopy		const reference: const Class& other
+MoveMethods - ShellowCopy	r-value reference:	  Class&& other
+--------------------------------------------------------------------
+*/
