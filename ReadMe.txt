@@ -8,6 +8,9 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 TOREAD:
 http://cplusplus.com/doc/tutorial/typecasting/
 
+MoveSemanthic:
+https://www.youtube.com/watch?v=ehMg6zvXuMY&list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&index=89
+
 TODO:
 В отдельном проекте в Solution IntroductionToOOP реализовать класс String,
 описывающий строку. Обеспечить следующие варианты создания строк:
