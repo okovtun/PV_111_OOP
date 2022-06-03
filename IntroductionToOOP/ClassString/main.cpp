@@ -1,4 +1,5 @@
-﻿#include<iostream>
+﻿//StringConstructorsDelegation
+#include<iostream>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -29,22 +30,15 @@ public:
 		//this->str = new char[size] {};
 		cout << "Def1aConstruct:\t" << this << endl;
 	}
-	String(const char* str) :size(strlen(str) + 1), str(new char[size] {})
+	String(const char* str) :String(strlen(str) + 1)
 	{
-		//this->size = strlen(str) + 1;
-		//this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = str[i];
 		cout << "Constructor:\t" << this << endl;
 	}
-	String(const String& other) :size(other.size), str(new char[size] {})
+	String(const String& other) :String(other.str)
 	{
 		//CopyConstrutor должен выполнять DeepCopy (Побитовое копирование),
 		//т.е., выделить новую память, и скопировать в нее содержимое другого объекта
-		for (int i = 0; i < size; i++)
-		{
-			this->str[i] = other.str[i];
-		}
-		//---------------------------------------------------------------------------
 		cout << "CopyConstructor:" << this << endl;
 	}
 	String(String&& other) :size(other.size), str(other.str)
@@ -108,11 +102,11 @@ String operator+(const String& left, const String& right)
 	//Левую строку копируем соответственно:
 	for (int i = 0; i < left.get_size(); i++)
 		cat[i] = left[i];
-		//cat.get_str()[i] = left.get_str()[i];
-	//Правую строку копируем со смещением вправо на размер левой строки
+	//cat.get_str()[i] = left.get_str()[i];
+//Правую строку копируем со смещением вправо на размер левой строки
 	for (int i = 0; i < right.get_size(); i++)
 		cat[i + left.get_size() - 1] = right[i];
-		//cat.get_str()[i + left.get_size() - 1] = right.get_str()[i];
+	//cat.get_str()[i + left.get_size() - 1] = right.get_str()[i];
 	return cat;
 }
 
@@ -158,6 +152,8 @@ void main()
 	//str3 = str1 + str2;
 	//str3.print();
 	cout << str3 << endl;
+	String str4 = str3;
+	cout << str4 << endl;
 #endif // MOVE_METHODS_CHECK
 	//StringHeaderInitialising
 #ifdef CALLING_CONSTRUCTORS
