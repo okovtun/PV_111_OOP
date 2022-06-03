@@ -13,6 +13,9 @@ https://cplusplus.com/doc/tutorial/classes2/
 https://www.youtube.com/watch?v=ehMg6zvXuMY&list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&index=89
 
 TODO:
+В отдельной ветке разделить класс Fraction на файлы.
+
+DONE:
 В отдельном проекте в Solution IntroductionToOOP реализовать класс String,
 описывающий строку. Обеспечить следующие варианты создания строк:
 	String str1;	//Создается пустая строка размером 80 Byte
