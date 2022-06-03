@@ -9,6 +9,7 @@ TOREAD:
 http://cplusplus.com/doc/tutorial/typecasting/
 
 MoveSemanthic:
+https://cplusplus.com/doc/tutorial/classes2/
 https://www.youtube.com/watch?v=ehMg6zvXuMY&list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&index=89
 
 TODO:
