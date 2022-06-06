@@ -5,6 +5,13 @@ https://meet.google.com/mho-khdw-fhj
 Book:
 https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sharing
 
+//////////////////////////////////////////////////////////////////////////
+//////////						Inheritance						//////////
+//////////////////////////////////////////////////////////////////////////
+
+TODO:
+В проекте Academy реализовать классы Teacher и Graduate.
+
 TOREAD:
 http://cplusplus.com/doc/tutorial/typecasting/
 
