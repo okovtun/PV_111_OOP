@@ -9,6 +9,9 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 //////////						Inheritance						//////////
 //////////////////////////////////////////////////////////////////////////
 
+TOREAD:
+https://cplusplus.com/doc/tutorial/polymorphism/
+
 TODO:
 В проекте Academy реализовать классы Teacher и Graduate.
 
