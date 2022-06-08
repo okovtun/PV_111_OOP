@@ -13,6 +13,10 @@ TOREAD:
 https://cplusplus.com/doc/tutorial/polymorphism/
 
 TODO:
+Создать ветку AcademySeparated, и в ней вынести классы 
+в отдельные файлы.
+
+DONE:
 В проекте Academy реализовать классы Teacher и Graduate.
 
 TOREAD:
