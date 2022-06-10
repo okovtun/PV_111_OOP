@@ -47,7 +47,7 @@ public:
 		set_age(age);
 		cout << "HConstructor:\t" << this << endl;
 	}
-	~Human()
+	virtual ~Human()
 	{
 		cout << "HDestructor:\t" << this << endl;
 	}
@@ -243,6 +243,7 @@ void main()
 	//(Runtime polymorphism) - Полиморфизм подтипов.
 
 	//Generalisation:
+	//Upcast - приведение к базовому типу
 	Human* group[] =
 	{
 		new Student("Pinkman", "Jessie", 23, "Chemistry", "WW_220", 1, 90, 95),
@@ -250,13 +251,21 @@ void main()
 		new Graduate("Schreder", "Hank", 40, "Criminalistics", "WW_220", 5, 95, 80, "How to catch Heisenberg"),
 		new Student("Vercetti", "Tomas", 30, "Theft", "Vice", 3, 90, 85),
 		new Teacher("Diaz", "Ricardo", 50, "Weapons distribution", 20),
-		new Teacher("Einstein", "Albert", 143, "Astronomy", 100)
+		new Teacher("Einstein", "Albert", 143, "Astronomy", 100),
 	};
 
 	cout << "-------------------------------------------------\n";
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
 	{
-		group[i]->print();
+		//RTTI - Runtime Type Information
+		cout << typeid(*group[i]).name() << endl;
+		//group[i]->print();
+		cout << *group[i] << endl;
 		cout << "-------------------------------------------------\n";
+	}
+
+	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
+	{
+		delete group[i];
 	}
 }
