@@ -53,11 +53,16 @@ public:
 	}
 
 	//					Methods:
-	virtual void print()const
+	virtual std::ostream& print(std::ostream& os/* = std::cout*/)const
 	{
-		cout << last_name << " " << first_name << " " << age << " years.\n";
+		return os << last_name << " " << first_name << " " << age << " years.\n";
 	}
 };
+
+std::ostream& operator<<(std::ostream& os, const Human& obj)
+{
+	return obj.print(os);
+}
 
 #define STUDENT_TAKE_PARAMETERS const std::string& speciality, const std::string& group, unsigned int year, double rating, double attendance
 #define STUDENT_GIVE_PARAMETERS speciality, group, year, rating, attendance
@@ -125,10 +130,10 @@ public:
 		cout << "SDestructor:\t" << this << endl;
 	}
 	//					Methods:
-	void print()const
+	std::ostream& print(std::ostream& os)const
 	{
-		Human::print();
-		cout << "Специальность: " << speciality + " " + "Группа: " + group << " " << "Курс: " << year << " " << "Рейтинг: " << rating << " " << "Посещаемость: " << attendance << endl;
+		Human::print(os);
+		return os << "Специальность: " << speciality + " " + "Группа: " + group << " " << "Курс: " << year << " " << "Рейтинг: " << rating << " " << "Посещаемость: " << attendance << endl;
 	}
 };
 
@@ -170,10 +175,10 @@ public:
 		cout << "TDestructor:\t" << this << endl;
 	}
 	//					Methods:
-	void print()const
+	std::ostream& print(std::ostream& os)const
 	{
-		Human::print();
-		cout << "Специальность: " << speciality + " " << "Опыт: " << experience << endl;
+		Human::print(os);
+		return os << "Специальность: " << speciality + " " << "Опыт: " << experience << endl;
 	}
 };
 class Graduate :public Student
@@ -209,10 +214,10 @@ public:
 		cout << "GDestructor:\t" << this << endl;
 	}
 	//					Methods:
-	void print()const
+	std::ostream& print(std::ostream& os)const
 	{
-		Student::print();
-		cout << "Тема диплома: " << diplom << endl;
+		//Student::print(os);
+		return Student::print(os) << "Тема диплома: " << diplom << endl;
 	}
 };
 
