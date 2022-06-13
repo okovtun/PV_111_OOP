@@ -11,8 +11,13 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 
 TOREAD:
 https://cplusplus.com/doc/tutorial/polymorphism/
+https://cplusplus.com/doc/tutorial/files/
 
 TODO:
+1. В проекте Files имя файла должно вводиться пользователем с клавиатуры;
+2. В проекте Academy сохранить группу в файл;
+
+DONE:
 Создать ветку AcademySeparated, и в ней вынести классы 
 в отдельные файлы.
 
