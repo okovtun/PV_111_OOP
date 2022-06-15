@@ -14,6 +14,9 @@ https://cplusplus.com/doc/tutorial/polymorphism/
 https://cplusplus.com/doc/tutorial/files/
 
 TODO:
+Обеспечить выравнивание в классах Teacher и Graduate.
+
+DONE:
 1. В проекте Files имя файла должно вводиться пользователем с клавиатуры;
 2. В проекте Academy сохранить группу в файл;
 
