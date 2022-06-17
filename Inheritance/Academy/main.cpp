@@ -63,7 +63,10 @@ public:
 	{
 		ofs.width(20);
 		ofs << std::left;
-		ofs << last_name + " " + first_name << age;
+		ofs << last_name + " " + first_name;
+		ofs.width(4);
+		ofs << std::right;
+		ofs << age;
 		return ofs;
 	}
 };
@@ -209,7 +212,13 @@ public:
 	}
 	std::ofstream& print(std::ofstream& ofs)const
 	{
-		Human::print(ofs) << speciality << " " << experience;
+		Human::print(ofs) << " ";
+		ofs.width(25);
+		ofs << std::left;
+		ofs << speciality;
+		ofs.width(5);
+		ofs << std::right;
+		ofs << experience;
 		return ofs;
 	}
 };
@@ -253,7 +262,7 @@ public:
 	}
 	std::ofstream& print(std::ofstream& ofs)const
 	{
-		Student::print(ofs) << diplom;
+		Student::print(ofs) << " " << diplom;
 		return ofs;
 	}
 };
@@ -294,6 +303,7 @@ void main()
 		new Student("Vercetti", "Tomas", 30, "Theft", "Vice", 3, 90, 85),
 		new Teacher("Diaz", "Ricardo", 50, "Weapons distribution", 20),
 		new Teacher("Einstein", "Albert", 143, "Astronomy", 100),
+		new Teacher("Montana", "Antonio", 30, "Criminalistics", 3)
 	};
 	std::ofstream fout("Academy.txt");
 	cout << "-------------------------------------------------\n";

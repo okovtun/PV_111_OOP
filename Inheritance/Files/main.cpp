@@ -5,9 +5,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+//#define WRITE_TO_FILE
+
 void main()
 {
 	setlocale(LC_ALL, "");
+#ifdef WRITE_TO_FILE
 	const int SIZE = 256;
 	char sz_filename[SIZE] = {};	//sz_ - String Zero
 	cout << "Введите имя файла: ";
@@ -35,4 +38,26 @@ void main()
 	//Функция strcat(char* str1, char* str2) выполняет конкатенацию строк (слияние строк)
 	//К содержимому первой строки добавляется содержимое второй строки.
 	system(sz_command);
+#endif // WRITE_TO_FILE
+
+	std::ifstream fin;
+	fin.open("File.txt");
+	if (fin.is_open())
+	{
+		//TODO: read file
+		const int n = 256;
+		char buffer[n] = {};
+		while (!fin.eof())	//eof() - end of file
+		{
+			//fin >> buffer;
+			fin.getline(buffer, n);
+			cout << buffer << endl;
+		}
+	}
+	else
+	{
+		std::cerr << "Error: file not found" << endl;
+	}
+	fin.close();
+	system("notepad File.txt");
 }
