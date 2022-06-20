@@ -429,3 +429,10 @@ void main()
 	}
 	delete[] group;
 }
+
+/*
+	type name(parameters);
+
+	virtual type name(parameters) = 0;
+
+*/
