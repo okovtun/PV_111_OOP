@@ -14,6 +14,10 @@ https://cplusplus.com/doc/tutorial/polymorphism/
 https://cplusplus.com/doc/tutorial/files/
 
 TODO:
+В проект AbstractGeometry добавить иерархию классов треугольников.
+Все треугольники нужно нарисовать используя WinGDI.
+
+DONE:
 В проект AbstractGeometry добавить класс Circle и нарисовать его исползуя WinGDI;
 
 DONE:
