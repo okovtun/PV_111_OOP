@@ -279,6 +279,17 @@ namespace Geometry
 			Shape::info();
 		}
 	};
+
+	class Triangle :public Shape
+	{
+	public:
+		Triangle(int start_x, int start_y, unsigned int line_width, Color color) :
+			Shape(start_x, start_y, line_width, color) {}
+		~Triangle() {}
+		virtual double get_height()const = 0;
+	};
+
+	class EquilateralTriangle:public Triangle
 }
 
 void main()
