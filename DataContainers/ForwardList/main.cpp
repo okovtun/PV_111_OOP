@@ -45,6 +45,10 @@ public:
 		//3) Говорим, что новый элемент является головой списка:
 		Head = New;
 	}
+	void push_back(int Data)
+	{
+		
+	}
 
 	//				Methods:
 	void print()const
