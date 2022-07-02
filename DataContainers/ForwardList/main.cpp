@@ -47,7 +47,32 @@ public:
 	}
 	void push_back(int Data)
 	{
-		
+		if (Head == nullptr)return push_front(Data);
+		//1) Создаем новый элемент:
+		Element* New = new Element(Data);
+		//2) Дойти до конца скписка:
+		Element* Temp = Head;
+		while (Temp->pNext)Temp = Temp->pNext;
+		//3) Присоединяем новый элемент к списку:
+		Temp->pNext = New;
+	}
+
+	//				Removing elements:
+	void pop_front()
+	{
+		//1) Запоминаем адрес удаляемого элемента;
+		Element* erased = Head;
+		//2) Исключаем элемент из списка:
+		Head = Head->pNext;
+		//3) Удаляем элемент из памяти
+		delete erased;
+	}
+	void pop_back()
+	{
+		Element* Temp = Head;
+		while (Temp->pNext->pNext)Temp = Temp->pNext;
+		delete Temp->pNext;
+		Temp->pNext = nullptr;
 	}
 
 	//				Methods:
@@ -73,7 +98,11 @@ void main()
 	ForwardList list;	//Односвязный список list
 	for (int i = 0; i < n; i++)
 	{
-		list.push_front(rand() % 100);
+		//list.push_front(rand() % 100);
+		list.push_back(rand() % 100);
 	}
+	list.print();
+	list.pop_front();
+	//list.pop_back();
 	list.print();
 }
