@@ -9,17 +9,22 @@ class Element
 {
 	int Data;		//Значение элемента
 	Element* pNext;	//Адрес следующего элементна
+	static int count;
 public:
 	Element(int Data, Element* pNext = nullptr) :Data(Data), pNext(pNext)
 	{
+		count++;
 		cout << "EConstructor:\t" << this << endl;
 	}
 	~Element()
 	{
+		count--;
 		cout << "EDestructor:\t" << this << endl;
 	}
 	friend class ForwardList;
 };
+
+int Element::count = 0;
 
 class ForwardList
 {
@@ -56,7 +61,15 @@ public:
 		//3) Присоединяем новый элемент к списку:
 		Temp->pNext = New;
 	}
-
+	void insert(int Data, int Index)
+	{
+		if (Index == 0)return push_front(Data);
+		Element* New = new Element(Data);
+		Element* Temp = Head;
+		for (int i = 0; i < Index - 1; i++)Temp = Temp->pNext;
+		New->pNext = Temp->pNext;
+		Temp->pNext = New;
+	}
 	//				Removing elements:
 	void pop_front()
 	{
@@ -104,5 +117,11 @@ void main()
 	list.print();
 	list.pop_front();
 	//list.pop_back();
+	list.print();
+	int value;
+	int index;
+	cout << "Введите значение добавляемого элемента: "; cin >> value;
+	cout << "Введите индекс добавляемого элемента: "; cin >> index;
+	list.insert(value, index);
 	list.print();
 }
