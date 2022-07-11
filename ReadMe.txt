@@ -10,18 +10,21 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 //////////////////////////////////////////////////////////////////////////
 
 TODO:
-¬ класс ForwardList добавить следующие методы:
-	void push_back(int Data);
-	void pop_front();
-	void pop_back();
+¬ывести список на экран при помощи range-based for.
 
-	void insert(int Data, int index);
+DONE:
+¬ класс ForwardList добавить следующие методы:
+	void push_back(int Data);	DONE
+	void pop_front();			DONE
+	void pop_back();			DONE
+
+	void insert(int Data, int index);	DONE
 	void erase(int index);
 --------------------------------------------------------------------
-	Destructor();
-	CopyMethods;
-	MoveMethods;
-	operator+, который выполн€ет конкатенацию двух списков
+	Destructor();	DONE
+	CopyMethods;	DONE
+	MoveMethods;	DONE
+	operator+, который выполн€ет конкатенацию двух списков	DONE
 --------------------------------------------------------------------
 Ќеобходимо обеспечить возможность создани€ списков следующим образом:
 	ForwardList list = { 3, 5, 8, 13, 21 };
