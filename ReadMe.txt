@@ -10,6 +10,9 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 //////////////////////////////////////////////////////////////////////////
 
 TODO:
+Реализовать двусвязный список.
+
+DONE:
 Вывести список на экран при помощи range-based for.
 
 DONE:
