@@ -1,6 +1,7 @@
 https://github.com/okovtun/PV_111_OOP.git
 https://www.youtube.com/watch?v=4j0QYNF-NX0&list=PLeqyOOqxeiIMQgDDO6Ps9bU9cLghpFJ69
 https://meet.google.com/mho-khdw-fhj
+https://teams.microsoft.com/l/meetup-join/19:XqhHr8twtYoW9Bo7-N21Z3u7jSrTMMmUamvEavmMkiY1@thread.tacv2/1657728221886?context=%7B%22Tid%22:%22d3512d16-6dc5-41bd-be00-0069618327b7%22,%22Oid%22:%2245d60748-def7-49b6-8150-73158be99dc5%22%7D
 
 Book:
 https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sharing
