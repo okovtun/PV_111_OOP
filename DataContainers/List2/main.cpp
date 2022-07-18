@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 using std::cin;
 using std::cout;
@@ -32,7 +32,7 @@ class List
 public:
 	List()
 	{
-		Head = Tail = nullptr;//Когда список пуст, его Голова и Хвост указывают на 0
+		Head = Tail = nullptr;//РљРѕРіРґР° СЃРїРёСЃРѕРє РїСѓСЃС‚, РµРіРѕ Р“РѕР»РѕРІР° Рё РҐРІРѕСЃС‚ СѓРєР°Р·С‹РІР°СЋС‚ РЅР° 0
 		size = 0;
 		cout << "LConstructor:\t" << this << endl;
 	}
@@ -117,14 +117,14 @@ public:
 		cout << "Head: " << Head << endl;
 		for (Element* Temp = Head; Temp; Temp = Temp->pNext)
 			cout << Temp->pPrev << tab << Temp << tab << Temp->Data << tab << Temp->pNext << endl;
-		cout << "Количество элементов " << size << endl;
+		cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ " << size << endl;
 	}
 	void reverse_print()const
 	{
 		cout << "Tail: " << Tail << endl;
 		for (Element* Temp = Tail; Temp; Temp = Temp->pPrev)
 			cout << Temp->pPrev << tab << Temp << tab << Temp->Data << tab << Temp->pNext << endl;
-		cout << "Количество элементов " << size << endl;
+		cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ " << size << endl;
 	}
 };
 
@@ -132,7 +132,7 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int n;
-	cout << "Введите размер списка: "; cin >> n;
+	cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРїРёСЃРєР°: "; cin >> n;
 	List list;
 	for (int i = 0; i < n; i++)
 	{
