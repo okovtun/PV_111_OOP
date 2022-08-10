@@ -11,6 +11,10 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 //////////////////////////////////////////////////////////////////////////
 
 TODO:
+1. От ветки InheritIteratorInList2 cоздать ветку MyTemplatedList2, и в ней шаблонизировать двусвязный список;
+2. От ветки MyTemplatedList2 создать ветку MyTemplatedList2separate, и в ней разделить шаблонный List2 на файлы;
+
+DONE:
 Создать ветку InheritIteratorsInList2, и в ней оптимизировать Итераторы двусвязного списка
 при помощи наследования.
 
