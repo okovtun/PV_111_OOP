@@ -8,6 +8,8 @@ using std::endl;
 #define tab "\t"
 #define delimiter "\n---------------------------------------\n"
 
+#define DEBUG
+
 class List
 {
 	class Element
@@ -19,11 +21,15 @@ class List
 		Element(int Data, Element* pNext = nullptr, Element* pPrev = nullptr)
 			:Data(Data), pNext(pNext), pPrev(pPrev)
 		{
+#ifdef DEBUG
 			cout << "EConstructor:\t" << this << endl;
+#endif // DEBUG
 		}
 		~Element()
 		{
+#ifdef DEBUG
 			cout << "EDestructor:\t" << this << endl;
+#endif // DEBUG
 		}
 		friend class List;
 	}*Head, *Tail;
@@ -37,11 +43,16 @@ public:
 	public:
 		Iterator(Element* Temp) :Temp(Temp)
 		{
+#ifdef DEBUG
 			cout << "ItConstructor:\t" << this << endl;
+#endif // DEBUG
 		}
 		~Iterator()
 		{
+#ifdef DEBUG
 			cout << "ItDestructor:\t" << this << endl;
+#endif // DEBUG
+
 		}
 
 		Iterator& operator++()
@@ -91,11 +102,15 @@ public:
 	public:
 		ReverseIterator(Element* Temp) :Temp(Temp)
 		{
+#ifdef DEBUG
 			cout << "RItConstructor:\t" << this << endl;
+#endif // DEBUG
 		}
 		~ReverseIterator()
 		{
+#ifdef DEBUG
 			cout << "RItDestructor:\t" << this << endl;
+#endif // DEBUG
 		}
 
 		ReverseIterator& operator++()
@@ -140,11 +155,11 @@ public:
 		}
 	};
 
-	Iterator begin()
+	const Iterator begin()const
 	{
 		return Head;
 	}
-	Iterator end()
+	const Iterator end()const
 	{
 		return nullptr;
 	}
@@ -161,7 +176,9 @@ public:
 	{
 		Head = Tail = nullptr;//Когда список пуст, его Голова и Хвост указывают на 0
 		size = 0;
+#ifdef DEBUG
 		cout << "LConstructor:\t" << this << endl;
+#endif // DEBUG
 	}
 	List(const std::initializer_list<int>& il) :List()
 	{
@@ -172,11 +189,17 @@ public:
 		for (int const* it = il.begin(); it != il.end(); ++it)
 			push_back(*it);
 	}
+	List(const List& other)
+	{
+		for (Iterator it = other.begin(); it != other.end(); ++it)push_back(*it);
+	}
 	~List()
 	{
 		//while (Head)pop_front();
 		while (Tail)pop_back();
+#ifdef DEBUG
 		cout << "LDestrcutor:\t" << this << endl;
+#endif // DEBUG
 	}
 
 	//					Adding Elements:
@@ -314,7 +337,20 @@ public:
 	}
 };
 
+List operator+(const List& left, const List& right)
+{
+	List cat = left;
+	for (List::Iterator it = right.begin(); it != right.end(); ++it)
+	{
+		cat.push_back(*it);
+		(*it) *= 10;
+	}
+	return cat;
+}
+
 //#define BASE_CHECK
+//#define ITERATORS_CHECK_1
+#define ITERATORS_CHECK_2
 
 void main()
 {
@@ -358,6 +394,7 @@ void main()
 	}
 #endif // BASE_CHECK
 
+#ifdef ITERATORS_CHECK_1
 	List list = { 3,5,8,13,21 };
 	list.print();
 	for (int i : list)
@@ -370,6 +407,14 @@ void main()
 		cout << *rit << tab;
 	}
 	cout << endl;
+#endif // ITERATORS_CHECK_1
+
+	List list1 = { 3,5,8,13,21 };
+	List list2 = { 34, 55,89 };
+	List list3 = list1 + list2;
+	for (int i : list1)cout << i << tab; cout << endl;
+	for (int i : list2)cout << i << tab; cout << endl;
+	for (int i : list3)cout << i << tab; cout << endl;
 }
 
 /*
