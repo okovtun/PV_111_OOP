@@ -200,6 +200,14 @@ public:
 	{
 		return nullptr;
 	}
+	ReverseIterator rbegin()
+	{
+		return Tail;
+	}
+	ReverseIterator rend()
+	{
+		return nullptr;
+	}
 
 	List()
 	{
@@ -218,13 +226,44 @@ public:
 	}
 	List(const List<T>& other):List()
 	{
-		for (ConstIterator it = other.cbegin(); it != other.cend(); ++it)push_back(*it);
+		//for (ConstIterator it = other.cbegin(); it != other.cend(); ++it)push_back(*it);
+		*this = other;
+		cout << "LCopyConstructor:\t" << this << endl;
+	}
+	List(List<T>&& other):List()
+	{
+		*this = std::move(other);	//Функция move принудительно вызывает MoveAssignment если он есть.
+		cout << "LMoveConstructor:\t" << this << endl;
 	}
 	~List()
 	{
 		//while (Head)pop_front();
 		while (Tail)pop_back();
 		cout << "LDestructor:\t" << this << endl;
+	}
+
+	//					Operators
+	List<T>& operator=(const List<T>& other)
+	{
+		if (this == &other)return *this;
+		while (Head)pop_front();
+		for (List<T>::ConstIterator it = other.cbegin(); it != other.cend(); ++it)
+			push_back(*it);
+		cout << "LCopyAssignment:\t" << this << endl;
+		return *this;
+	}
+	List<T>& operator=(List<T>&& other)
+	{
+		if (this == &other)return *this;
+		while (Head)pop_front();
+		this->Head = other.Head;
+		this->Tail = other.Tail;
+		this->size = other.size;
+		other.Head = nullptr;
+		other.Tail = nullptr;
+		other.size = 0;
+		cout << "LMoveAssignment:\t" << this << endl;
+		return *this;
 	}
 
 	//					Adding Elements:
@@ -366,7 +405,7 @@ template<typename T>
 //type	name	 (parameters)
 List<T> operator+(const List<T>& left, const List<T>& right)
 {
-	List<T> cat = left;
+	List<T> cat = left;	//CopyConstructor
 	for (typename List<T>::ConstIterator it = right.cbegin(); it != right.cend(); ++it)
 	{
 		cat.push_back(*it);
@@ -437,11 +476,19 @@ void main()
 #endif // ITERATORS_CHECK_1
 
 	List<int> list1 = { 3,5,8,13,21 };
+	list1 = list1;
 	List<int> list2 = { 34,55,89 };
 	List<int> list3 = list1 + list2;
 	for (int i : list1)cout << i << tab; cout << endl;
 	for (int i : list2)cout << i << tab; cout << endl;
 	for (int i : list3)cout << i << tab; cout << endl;
+
+	List<double> d_list = { 1.5, 2.7, 3.14, 8.3 };
+	d_list.print();
+	for (double i : d_list)cout << i << tab; cout << endl;
+	for (List<double>::ReverseIterator rit = d_list.rbegin(); rit != d_list.rend(); ++rit)
+		cout << *rit << tab;
+	cout << endl;
 }
 
 /*
