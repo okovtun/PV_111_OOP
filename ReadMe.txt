@@ -11,6 +11,16 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 //////////////////////////////////////////////////////////////////////////
 
 TODO:
+1. Ќа базе класса ForwardList создать класс Stack.
+   Stack - это модель пам€ти, из которой последний записанный элемент считываетс€ первым.
+   LIFO - Last-In First Out;
+   Stack top - вершина стека;
+   Stack bottom - дно стека;
+2. Ќа базе класса List, реализовать класс Queue (очередь)
+   Queue - это модель пам€ти из которой последний записанный элемент считываетс€ последним.
+   FIFO - First-In First-Out;
+
+DONE:
 1. ќт ветки InheritIteratorInList2 cоздать ветку MyTemplatedList2, и в ней шаблонизировать двусв€зный список;
 2. ќт ветки MyTemplatedList2 создать ветку MyTemplatedList2separate, и в ней разделить шаблонный List2 на файлы;
 
