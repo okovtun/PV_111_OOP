@@ -11,6 +11,11 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 //////////////////////////////////////////////////////////////////////////
 
 TODO:
+В отдельных ветках скомпилировать List2 в *.lib-файл и в *.dll-файл.
+https://docs.microsoft.com/en-us/cpp/build/walkthrough-creating-and-using-a-static-library-cpp?view=msvc-170
+https://docs.microsoft.com/en-us/cpp/build/walkthrough-creating-and-using-a-dynamic-link-library-cpp?view=msvc-170
+
+DONE:
 Реализовать двусвязный список.
 
 DONE:
