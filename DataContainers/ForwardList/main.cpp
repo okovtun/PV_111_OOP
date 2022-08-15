@@ -28,6 +28,7 @@ public:
 	}
 	friend class Iterator;
 	friend class ForwardList;
+	friend class Stack;
 	friend ForwardList operator+(const ForwardList& left, const ForwardList& right);
 };
 
@@ -77,6 +78,7 @@ public:
 
 class ForwardList
 {
+protected:
 	Element* Head;	//Голова списка
 	unsigned int size;
 public:
@@ -251,9 +253,42 @@ ForwardList operator+(const ForwardList& left, const ForwardList& right)
 	return cat;
 }
 
+class Stack :private ForwardList
+{
+public:
+	unsigned int get_size()const
+	{
+		return size;
+	}
+	void push(int Data)
+	{
+		//Добавляет значение в в контейнер
+		ForwardList::push_front(Data);
+	}
+	void pop()
+	{
+		//Удаляет вершину стека
+		ForwardList::pop_front();
+	}
+	const int& top()const
+	{
+		return Head->Data;
+	}
+	int& top()
+	{
+		return Head->Data;
+	}
+
+	void print()const
+	{
+		ForwardList::print();
+	}
+};
+
 //#define BASE_CHECK
 //#define OPERATOR_PLUS_CHECK
 //#define RANGE_BASED_ARRAY
+//#define RANGE_BASED_LIST
 
 void main()
 {
@@ -325,6 +360,7 @@ void main()
 	//Итератор 'i' последовательно принимает значение каждого элемента массива.  
 #endif // RANGE_BASED_ARRAY
 
+#ifdef RANGE_BASED_LIST
 	ForwardList list = { 3,5,8,13,21 };
 	list.print();
 	for (int i : list)
@@ -337,4 +373,17 @@ void main()
 		cout << *it << tab;
 	}
 	cout << endl;
+#endif // RANGE_BASED_LIST
+
+	Stack stack;
+	stack.push(3);
+	stack.push(5);
+	stack.push(8);
+	stack.push(13);
+	stack.push(21);
+	cout << stack.get_size() << endl;
+	stack.print();
+	for (; stack.get_size(); stack.pop())
+		cout << stack.top() << endl;
+	stack.print();
 }
