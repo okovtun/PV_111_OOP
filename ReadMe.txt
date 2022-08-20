@@ -12,17 +12,17 @@ https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sha
 
 TODO:
 1. В Бинарное дерево добавить следующие методы:
-	int minValue()const;
-	int maxValue()const;
-	int Count()const;	//Вычисляет количество элементов дерева
-	int Sum()const;		//Сумма элементов дерева
-	int Avg()const;		//Среднее-арифметическое элементов дерева
+	int minValue()const;							DONE
+	int maxValue()const;							DONE
+	int Count()const;	//Вычисляет количество элементов дерева	DONE
+	int Sum()const;		//Сумма элементов дерева	DONE
+	int Avg()const;		//Среднее-арифметическое элементов дерева	DONE
 	int depth()const;	//Определяет глубину дерева
 	void clear();		//Очищает дерево (удаляет из него все элементы)
 	void erase(???);	//Удаляет заданное значение из дерева
 	~Tree();
 2. Объеспечить вызов методов из main() без необходимости передавать в них корень Дерева,
-   например, чтобы вместо tree.print(tree.getRoot()) можно было написать просто tree.print();
+   например, чтобы вместо tree.print(tree.getRoot()) можно было написать просто tree.print();	DONE
 3. Tree tree = { 3, 5, 8, 13, 21 };
 4. CopyMethods;
 5. MoveMethods;
