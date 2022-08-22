@@ -6,6 +6,11 @@ https://teams.microsoft.com/l/meetup-join/19:XqhHr8twtYoW9Bo7-N21Z3u7jSrTMMmUamv
 Book:
 https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sharing
 
+Absences:
+2022/08/17
+2022/08/19	DONE
+2022/08/26
+
 //////////////////////////////////////////////////////////////////////////
 //////////					DATA CONTAINERS						//////////
 //////////////////////////////////////////////////////////////////////////
@@ -17,10 +22,10 @@ TODO:
 	int Count()const;	//Вычисляет количество элементов дерева	DONE
 	int Sum()const;		//Сумма элементов дерева	DONE
 	int Avg()const;		//Среднее-арифметическое элементов дерева	DONE
-	int depth()const;	//Определяет глубину дерева
-	void clear();		//Очищает дерево (удаляет из него все элементы)
-	void erase(???);	//Удаляет заданное значение из дерева
-	~Tree();
+	int depth()const;	//Определяет глубину дерева	DONE
+	void clear();		//Очищает дерево (удаляет из него все элементы)	DONE
+	void erase(???);	//Удаляет заданное значение из дерева		DONE
+	~Tree();			DONE
 2. Объеспечить вызов методов из main() без необходимости передавать в них корень Дерева,
    например, чтобы вместо tree.print(tree.getRoot()) можно было написать просто tree.print();	DONE
 3. Tree tree = { 3, 5, 8, 13, 21 };
