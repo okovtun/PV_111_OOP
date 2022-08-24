@@ -1,0 +1,15 @@
+STL - Standard Template Library
+Container - 
+
+SEQUENCE CONTAINERS:
+array, vector, dequeue, list, forward_list;
+
+ASSOCIATIVE CONTAINERS:
+map, set, multimap, multiset;
+
+ADAPTOR CONTAINERS:
+stack, queue, priority_queue;
+
+UNORDERED ASSOCIATIVE CONTAINERS:
+unordered_map, unordered_set, 
+unordered_multimap, unordered_multiset;
