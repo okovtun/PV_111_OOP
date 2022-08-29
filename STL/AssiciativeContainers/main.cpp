@@ -3,6 +3,7 @@
 #include<string>
 #include<set>
 #include<map>
+#include<list>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -82,5 +83,30 @@ void main()
 	}
 #endif // STL_MAP
 
+	std::map<std::string, std::list<std::string>> dictionary = 
+	{
+		std::pair<std::string, std::list<std::string>>("clutter", {"беспордок", "хаос"}),
+		{"space", {"пространство","пробел", "космос"}},
+		{"plural", {"множественное число", ""}},
+		{"worth", {"ценность", "значение", "значимость"}}
+	};
+	/*for (std::map<std::string, std::list<std::string>>::iterator it = dictionary.begin(); it != dictionary.end(); ++it)
+	{
+		cout << it->first << ":\t";
+		for (std::list<std::string>::iterator it2 = it->second.begin(); it2 != it->second.end(); ++it2)
+		{
+			cout << *it2 << ", ";
+		}
+		cout << ";\n";
+	}*/
 
+	for (std::pair<std::string, std::list<std::string>> i : dictionary)
+	{
+		cout << i.first << ":\t";
+		for (std::string j : i.second)
+		{
+			cout << j << ", ";
+		}
+		cout << ";\n";
+	}
 }

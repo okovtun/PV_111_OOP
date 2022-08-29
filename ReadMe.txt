@@ -19,6 +19,9 @@ TOREAD:
 https://cplusplus.com/reference/stl/
 
 TODO:
+https://github.com/okovtun/PV_111_OOP/blob/master/STL/GAI%20DZ_PS_C%2B%2B_nedelya_09.pdf
+
+DONE:
 Создать STL list, добавить в него значение по индексу, и удалить из него значение по индексу.
 
 //////////////////////////////////////////////////////////////////////////
