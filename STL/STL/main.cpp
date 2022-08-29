@@ -3,6 +3,8 @@
 #include<array>
 #include<vector>
 #include<deque>
+#include<list>
+#include<iterator>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -11,7 +13,7 @@ using std::endl;
 
 //#define ARRAY
 //#define VECTOR
-#define DEQUE
+//#define DEQUE
 
 void main()
 {
@@ -120,4 +122,17 @@ void main()
 	cout << endl;
 #endif // DEQUE
 
+	std::list<int> list = { 3,5,8,13,21 };
+	for (std::list<int>::iterator it = list.begin(); it != list.end(); ++it)
+		cout << *it << tab;
+	cout << endl;
+	int index;
+	int value;
+	cout << "Введите индекс добавляемого элемента: "; cin >> index;
+	cout << "Введите значение добавляемого элемента: "; cin >> value;
+	std::list<int>::iterator position = list.begin();
+	//for (int i = 0; i < index; i++)position++;
+	std::advance(position, index);
+	list.insert(position, value);
+	for (int i : list)cout << i << tab; cout << endl;
 }
