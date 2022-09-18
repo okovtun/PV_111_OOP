@@ -7,9 +7,13 @@ Book:
 https://drive.google.com/drive/folders/1mIhAKMp5-Jpy6s5X8u924tRCXFEdHE_z?usp=sharing
 
 Absences:
-2022/08/17
+2022/08/17	DONE
 2022/08/19	DONE
-2022/08/26
+2022/08/26	DONE
+
+TODO:
+В Solution WinAPI добавить проект ListBox, и выполнить все те же действия, 
+которые были выполнены над ComboBox.
 
 TOREAD:
 https://docs.microsoft.com/en-us/cpp/cpp/argument-passing-and-naming-conventions?view=msvc-170
